@@ -2,7 +2,8 @@ FROM snowdreamtech/php:8.1.29
 
 LABEL maintainer="snowdream <sn0wdr1am@qq.com>"
 
-ENV ADMINER_VERSION=4.8.1
+ENV ADMINER_VERSION=4.8.1 \
+    ADMINER_DESIGN='default'
 
 RUN mkdir -p /usr/share/webapps/adminer \
     && wget https://github.com/vrana/adminer/releases/download/v${ADMINER_VERSION}/adminer-${ADMINER_VERSION}.php -O /usr/share/webapps/adminer/index.php \
