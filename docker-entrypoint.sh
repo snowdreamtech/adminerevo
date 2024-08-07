@@ -21,6 +21,7 @@ cat >${ADMINER_PATH}/index.php <<EOF
 function adminer_object() {
     // required to run any plugin
     include_once "./plugins/plugin.php";
+    include_once "./plugins/login-password-less.php";
     
     // autoloader
     foreach (glob("plugins/*.php") as \$filename) {
@@ -51,7 +52,8 @@ function adminer_object() {
         new AdminerJsonColumn(),      // https://raw.githubusercontent.com/vrana/adminer/master/plugins/json-column.php  
         // new AdminerLoginOtp(),        // https://raw.githubusercontent.com/vrana/adminer/master/plugins/login-otp.php
         // new AdminerLoginServers(),    // https://raw.githubusercontent.com/vrana/adminer/master/plugins/login-servers.php     
-        // new AdminerLoginPasswordLess(),// https://raw.githubusercontent.com/vrana/adminer/master/plugins/login-password-less.php         
+        // TODO: inline the result of password_hash() so that the password is not visible in source codes
+		new AdminerLoginPasswordLess(password_hash("${ADMINER_SQLITE_PASSWORD}", PASSWORD_DEFAULT)),// https://raw.githubusercontent.com/vrana/adminer/master/plugins/login-password-less.php         
         // new AdminerLoginSsl(),        // https://raw.githubusercontent.com/vrana/adminer/master/plugins/login-ssl.php
         // new AdminerLoginTable(),      // https://raw.githubusercontent.com/vrana/adminer/master/plugins/login-table.php
         // new AdminerMasterSlave(),     // https://raw.githubusercontent.com/vrana/adminer/master/plugins/master-slave.php
