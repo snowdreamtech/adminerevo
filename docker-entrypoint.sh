@@ -15,6 +15,13 @@ if [ ${ADMINER_DESIGN} == 'default' ]; then {
 }
 fi
 
+# Random ADMINER_SQLITE_PASSWORD Generator
+if [ -z ${ADMINER_SQLITE_PASSWORD} ]; then {
+    ADMINER_SQLITE_PASSWORD=$(openssl rand -hex 16)
+    echo "ADMINER_SQLITE_PASSWORD:${ADMINER_SQLITE_PASSWORD}"
+}
+fi
+
 # index.php
 cat >${ADMINER_PATH}/index.php <<EOF
 <?php
