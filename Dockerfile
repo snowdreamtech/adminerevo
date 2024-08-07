@@ -1,18 +1,20 @@
-FROM alpine:3.20.2
+FROM snowdreamtech/php:8.1.29
 
 LABEL maintainer="snowdream <sn0wdr1am@qq.com>"
 
-RUN echo "@main https://dl-cdn.alpinelinux.org/alpine/edge/main" | tee -a /etc/apk/repositories \
-    && echo "@community https://dl-cdn.alpinelinux.org/alpine/edge/community" | tee -a /etc/apk/repositories \
-    && echo "@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing" | tee -a /etc/apk/repositories \
-    && apk add --no-cache musl-locales \
-    musl-locales-lang \
-    tzdata \
-    openssl \
-    wget \
-    ca-certificates \                                                                                                                                                                                                      
-    && update-ca-certificates
+ENV ADMINER_VERSION=4.8.1
+
+RUN mkdir -p /usr/share/webapps/adminer \
+    && wget https://github.com/vrana/adminer/releases/download/v${ADMINER_VERSION}/adminer-${ADMINER_VERSION}.php -O /usr/share/webapps/adminer/index.php \
+    && wget https://github.com/vrana/adminer/releases/download/v${ADMINER_VERSION}/editor-${ADMINER_VERSION}.php -O /usr/share/webapps/adminer/editor.php
+
+
+EXPOSE 80
+
+COPY designs /usr/share/webapps/adminer/designs
 
 COPY docker-entrypoint.sh /usr/local/bin/
 
 ENTRYPOINT ["docker-entrypoint.sh"]
+
+CMD ["php","-S","0.0.0.0:80","-t","/usr/share/webapps/adminer"]
