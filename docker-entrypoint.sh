@@ -23,24 +23,24 @@ function adminer_object() {
     include_once "./plugins/plugin.php";
     
     // autoloader
-    foreach (glob("plugins/*.php") as $filename) {
-        include_once "./$filename";
+    foreach (glob("plugins/*.php") as \$filename) {
+        include_once "./\$filename";
     }
     
     // enable extra drivers just by including them
     //~ include "./plugins/drivers/simpledb.php";
     
-    $plugins = array(
+    \$plugins = array(
         // specify enabled plugins here
-        new AdminerDatabaseHide(),    // https://raw.githubusercontent.com/vrana/adminer/master/plugins/database-hide.php
-        new AdminerDesigns(),         // https://raw.githubusercontent.com/vrana/adminer/master/plugins/designs.php
+        new AdminerDatabaseHide(array('information_schema' , 'mysql' , 'performance_schema')),    // https://raw.githubusercontent.com/vrana/adminer/master/plugins/database-hide.php
+        // new AdminerDesigns(array('brade','bueltge','cvicebni-ubor','dracula','esterka','flat','galkaev','haeckel','hever','hydra','jukin','kahi','konya','lucas-sandery','mancave','mancave-hever','mvt','nette','ng9','nicu','pappu687','paranoiq','pepa-linha','pepa-linha-dark','pilot','pokorny','price','rmsoft','rmsoft_blue')),         // https://raw.githubusercontent.com/vrana/adminer/master/plugins/designs.php
         new AdminerDumpAlter(),       // https://raw.githubusercontent.com/vrana/adminer/master/plugins/dump-alter.php
         new AdminerDumpBz2(),         // https://raw.githubusercontent.com/vrana/adminer/master/plugins/dump-bz2.php
         new AdminerDumpDate(),        // https://raw.githubusercontent.com/vrana/adminer/master/plugins/dump-date.php
         new AdminerDumpJson(),        // https://raw.githubusercontent.com/vrana/adminer/master/plugins/dump-json.php
         new AdminerDumpXml(),         // https://raw.githubusercontent.com/vrana/adminer/master/plugins/dump-xml.php
         new AdminerDumpZip(),         // https://raw.githubusercontent.com/vrana/adminer/master/plugins/dump-zip.php
-        new AdminerEditCalendar(),    // https://raw.githubusercontent.com/vrana/adminer/master/plugins/edit-calendar.php     
+        // new AdminerEditCalendar(),    // https://raw.githubusercontent.com/vrana/adminer/master/plugins/edit-calendar.php     
         new AdminerEditForeign(),     // https://raw.githubusercontent.com/vrana/adminer/master/plugins/edit-foreign.php    
         new AdminerEditTextarea(),    // https://raw.githubusercontent.com/vrana/adminer/master/plugins/edit-textarea.php    
         new AdminerEnumOption(),      // https://raw.githubusercontent.com/vrana/adminer/master/plugins/enum-option.php  
@@ -49,30 +49,30 @@ function adminer_object() {
         new AdminerForeignSystem(),   // https://raw.githubusercontent.com/vrana/adminer/master/plugins/foreign-system.php     
         //new AdminerFrames(),        // https://raw.githubusercontent.com/vrana/adminer/master/plugins/frames.php    
         new AdminerJsonColumn(),      // https://raw.githubusercontent.com/vrana/adminer/master/plugins/json-column.php  
-        new AdminerLoginOtp(),        // https://raw.githubusercontent.com/vrana/adminer/master/plugins/login-otp.php
-        new AdminerLoginServers(),    // https://raw.githubusercontent.com/vrana/adminer/master/plugins/login-servers.php     
-        new AdminerLoginPasswordLess(),// https://raw.githubusercontent.com/vrana/adminer/master/plugins/login-password-less.php         
-        new AdminerLoginSsl(),        // https://raw.githubusercontent.com/vrana/adminer/master/plugins/login-ssl.php
-        new AdminerLoginTable(),      // https://raw.githubusercontent.com/vrana/adminer/master/plugins/login-table.php
-        new AdminerMasterSlave(),     // https://raw.githubusercontent.com/vrana/adminer/master/plugins/master-slave.php
-        new AdminerPrettyJsonColumn(),// https://raw.githubusercontent.com/vrana/adminer/master/plugins/pretty-json-column.php
-        new AdminerSlugify(),         // https://raw.githubusercontent.com/vrana/adminer/master/plugins/slugify.php
-        new AdminerSqlLog(),          // https://raw.githubusercontent.com/vrana/adminer/master/plugins/sql-log.php
-        new AdminerStructComments(),  // https://raw.githubusercontent.com/vrana/adminer/master/plugins/struct-comments.php
-        new AdminerTablesFilter(),    // https://raw.githubusercontent.com/vrana/adminer/master/plugins/tables-filter.php
-        new AdminerTinymce(),         // https://raw.githubusercontent.com/vrana/adminer/master/plugins/tinymce.php
+        // new AdminerLoginOtp(),        // https://raw.githubusercontent.com/vrana/adminer/master/plugins/login-otp.php
+        // new AdminerLoginServers(),    // https://raw.githubusercontent.com/vrana/adminer/master/plugins/login-servers.php     
+        // new AdminerLoginPasswordLess(),// https://raw.githubusercontent.com/vrana/adminer/master/plugins/login-password-less.php         
+        // new AdminerLoginSsl(),        // https://raw.githubusercontent.com/vrana/adminer/master/plugins/login-ssl.php
+        // new AdminerLoginTable(),      // https://raw.githubusercontent.com/vrana/adminer/master/plugins/login-table.php
+        // new AdminerMasterSlave(),     // https://raw.githubusercontent.com/vrana/adminer/master/plugins/master-slave.php
+        // new AdminerPrettyJsonColumn(),// https://raw.githubusercontent.com/vrana/adminer/master/plugins/pretty-json-column.php
+        // new AdminerSlugify(),         // https://raw.githubusercontent.com/vrana/adminer/master/plugins/slugify.php
+        // new AdminerSqlLog(),          // https://raw.githubusercontent.com/vrana/adminer/master/plugins/sql-log.php
+        // new AdminerStructComments(),  // https://raw.githubusercontent.com/vrana/adminer/master/plugins/struct-comments.php
+        // new AdminerTablesFilter(),    // https://raw.githubusercontent.com/vrana/adminer/master/plugins/tables-filter.php
+        // new AdminerTinymce(),         // https://raw.githubusercontent.com/vrana/adminer/master/plugins/tinymce.php
         new AdminerTranslation(),     // https://raw.githubusercontent.com/vrana/adminer/master/plugins/translation.php
         new AdminerVersionNoverify(), // https://raw.githubusercontent.com/vrana/adminer/master/plugins/version-noverify.php
-        new AdminerWymeditor(),       // https://raw.githubusercontent.com/vrana/adminer/master/plugins/wymeditor.php
+        // new AdminerWymeditor(),       // https://raw.githubusercontent.com/vrana/adminer/master/plugins/wymeditor.php
     );
     
     /* It is possible to combine customization and plugins:
     class AdminerCustomization extends AdminerPlugin {
     }
-    return new AdminerCustomization($plugins);
+    return new AdminerCustomization(\$plugins);
     */
     
-    return new AdminerPlugin($plugins);
+    return new AdminerPlugin(\$plugins);
 }
 
 // include original Adminer or Adminer Editor
