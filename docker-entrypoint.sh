@@ -42,7 +42,7 @@ function adminer_object() {
     
     \$plugins = array(
         // specify enabled plugins here
-        new AdminerDatabaseHide(array('information_schema' , 'mysql' , 'performance_schema')),    // https://raw.githubusercontent.com/vrana/adminer/master/plugins/database-hide.php
+        // new AdminerDatabaseHide(array('information_schema' , 'mysql' , 'performance_schema' , 'sys')),    // https://raw.githubusercontent.com/vrana/adminer/master/plugins/database-hide.php
         // new AdminerDesigns(array('brade','bueltge','cvicebni-ubor','dracula','esterka','flat','galkaev','haeckel','hever','hydra','jukin','kahi','konya','lucas-sandery','mancave','mancave-hever','mvt','nette','ng9','nicu','pappu687','paranoiq','pepa-linha','pepa-linha-dark','pilot','pokorny','price','rmsoft','rmsoft_blue')),         // https://raw.githubusercontent.com/vrana/adminer/master/plugins/designs.php
         new AdminerDumpAlter(),       // https://raw.githubusercontent.com/vrana/adminer/master/plugins/dump-alter.php
         new AdminerDumpBz2(),         // https://raw.githubusercontent.com/vrana/adminer/master/plugins/dump-bz2.php
