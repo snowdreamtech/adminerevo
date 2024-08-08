@@ -7,7 +7,9 @@ ADMINER_DESIGNS_PATH=${ADMINER_PATH}/designs
 
 # adminer design
 if [ ${ADMINER_DESIGN} == 'default' ]; then {
-    rm ${ADMINER_DESIGN_FILE}
+    if [ -f ${ADMINER_DESIGN_FILE} ]; then
+        rm ${ADMINER_DESIGN_FILE}
+    fi
 } else {
     if [ -f ${ADMINER_DESIGNS_PATH}/${ADMINER_DESIGN}/adminer.css ]; then
         cp ${ADMINER_DESIGNS_PATH}/${ADMINER_DESIGN}/adminer.css ${ADMINER_PATH}
