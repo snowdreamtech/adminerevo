@@ -36,7 +36,9 @@ function adminer_object() {
     }
     
     // enable extra drivers just by including them
-    //~ include "./plugins/drivers/simpledb.php";
+    include "./plugins/drivers/simpledb.php";
+    include "./plugins/drivers/firebird.php";
+    include "./plugins/drivers/clickhouse.php";
     
     \$plugins = array(
         // specify enabled plugins here

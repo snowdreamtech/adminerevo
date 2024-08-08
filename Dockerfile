@@ -6,10 +6,12 @@ ENV ADMINER_VERSION=4.8.1 \
     ADMINER_DESIGN='default' \
     ADMINER_SQLITE_PASSWORD='' \
     ADMINER_PATH=/usr/share/webapps/adminer \
-    ADMINER_PLUGINS_PATH=/usr/share/webapps/adminer/plugins
+    ADMINER_PLUGINS_PATH=/usr/share/webapps/adminer/plugins \
+    ADMINER_DRIVERS_PATH=/usr/share/webapps/adminer/plugins/drivers
 
 RUN mkdir -p ${ADMINER_PATH} \
     && mkdir -p ${ADMINER_PLUGINS_PATH} \
+    && mkdir -p ${ADMINER_DRIVERS_PATH} \
     && wget https://github.com/vrana/adminer/releases/download/v${ADMINER_VERSION}/adminer-${ADMINER_VERSION}.php -O ${ADMINER_PATH}/adminer.php \
     && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/vrana/adminer/master/plugins/plugin.php -O ${ADMINER_PLUGINS_PATH}/plugin.php \
     && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/vrana/adminer/master/plugins/database-hide.php -O ${ADMINER_PLUGINS_PATH}/database-hide.php \
@@ -43,7 +45,11 @@ RUN mkdir -p ${ADMINER_PATH} \
     && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/vrana/adminer/master/plugins/tinymce.php -O ${ADMINER_PLUGINS_PATH}/tinymce.php \
     && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/vrana/adminer/master/plugins/translation.php -O ${ADMINER_PLUGINS_PATH}/translation.php \
     && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/vrana/adminer/master/plugins/version-noverify.php -O ${ADMINER_PLUGINS_PATH}/version-noverify.php \
-    && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/vrana/adminer/master/plugins/wymeditor.php -O ${ADMINER_PLUGINS_PATH}/wymeditor.php 
+    && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/vrana/adminer/master/plugins/wymeditor.php -O ${ADMINER_PLUGINS_PATH}/wymeditor.php \
+    && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/vrana/adminer/master/plugins/drivers/clickhouse.php -O ${ADMINER_DRIVERS_PATH}/clickhouse.php \
+    && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/vrana/adminer/master/plugins/drivers/firebird.php -O ${ADMINER_DRIVERS_PATH}/firebird.php \
+    && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/vrana/adminer/master/plugins/drivers/simpledb.php -O ${ADMINER_DRIVERS_PATH}/simpledb.php 
+    
 
 
 EXPOSE 80
