@@ -1,6 +1,6 @@
 # Adminer
 
-[![Adminer](http://dockeri.co/image/snowdreamtech/adminer)](https://hub.docker.com/r/snowdreamtech/adminer)
+[![Adminer](http://dockeri.co/image/snowdreamtech/adminerevo)](https://hub.docker.com/r/snowdreamtech/adminerevo)
 
 Docker Image packaging for Adminer. (amd64, arm32v6, arm32v7, arm64v8, i386, ppc64le,riscv64, s390x)
 
@@ -14,23 +14,23 @@ To help you get started creating a container from this image you can either use 
 
 ```bash
 docker run -d \
-  --name=adminer \
+  --name=adminerevo \
   -e TZ=Asia/Shanghai \
   -p 8080:8080 \
   --restart unless-stopped \
-  snowdreamtech/adminer:latest
+  snowdreamtech/adminerevo:latest
 ```
 
 ### Advance
 
 ```bash
 docker run -d \
-  --name=adminer \
+  --name=adminerevo \
   -e TZ=Asia/Shanghai \
-  -e ADMINER_PORT=8080 \ 
+  -e ADMINEREVO_PORT=8080 \ 
   -p 8080:8080 \
   --restart unless-stopped \
-  snowdreamtech/adminer:latest
+  snowdreamtech/adminerevo:latest
 ```
 
 ## Docker Compose
@@ -41,9 +41,9 @@ docker run -d \
 version: "3"
 
 services:
-  adminer:
-    image: snowdreamtech/adminer:latest
-    container_name: adminer
+  adminerevo:
+    image: snowdreamtech/adminerevo:latest
+    container_name: adminerevo
     environment:
       - TZ=Asia/Shanghai
     ports:
@@ -57,12 +57,12 @@ services:
 version: "3"
 
 services:
-  adminer:
-    image: snowdreamtech/adminer:latest
-    container_name: adminer
+  adminerevo:
+    image: snowdreamtech/adminerevo:latest
+    container_name: adminerevo
     environment:
       - TZ=Asia/Shanghai
-      - ADMINER_PORT=8080
+      - ADMINEREVO_PORT=8080
     ports:
       - 8080:8080   
     restart: unless-stopped
@@ -72,7 +72,7 @@ services:
 
 ```bash
 docker buildx create --use --name build --node build --driver-opt network=host
-docker buildx build -t snowdreamtech/adminer --platform=linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x . --push
+docker buildx build -t snowdreamtech/adminerevo --platform=linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x . --push
 ```
 
 ## Reference
@@ -85,7 +85,7 @@ docker buildx build -t snowdreamtech/adminer --platform=linux/386,linux/amd64,li
 1. [Faster Multi-Platform Builds: Dockerfile Cross-Compilation Guide](https://www.docker.com/blog/faster-multi-platform-builds-dockerfile-cross-compilation-guide/)
 1. [docker/buildx](https://github.com/docker/buildx)
 
-## Contact (备注：adminer)
+## Contact (备注：adminerevo)
 
 * Email: sn0wdr1am@qq.com
 * QQ: 3217680847

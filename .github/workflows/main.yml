@@ -65,12 +65,12 @@ jobs:
             platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x
             push: true
             tags: |
-              snowdreamtech/adminer:latest
-              snowdreamtech/adminer:4.8.1
-              snowdreamtech/adminer:4.8
-              snowdreamtech/adminer:4
-              ghcr.io/snowdreamtech/adminer:latest
-              ghcr.io/snowdreamtech/adminer:4.8.1
-              ghcr.io/snowdreamtech/adminer:4.8
-              ghcr.io/snowdreamtech/adminer:4
+              snowdreamtech/adminerevo:latest
+              snowdreamtech/adminerevo:4.8.2
+              snowdreamtech/adminerevo:4.8
+              snowdreamtech/adminerevo:4
+              ghcr.io/snowdreamtech/adminerevo:latest
+              ghcr.io/snowdreamtech/adminerevo:4.8.2
+              ghcr.io/snowdreamtech/adminerevo:4.8
+              ghcr.io/snowdreamtech/adminerevo:4
              
