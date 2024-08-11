@@ -3,6 +3,7 @@ FROM snowdreamtech/php:8.1.29
 LABEL maintainer="snowdream <sn0wdr1am@qq.com>"
 
 ENV ADMINER_VERSION=4.8.1 \
+    ADMINER_PORT=8080 \
     ADMINER_SQLITE_PASSWORD='' \
     ADMINER_PATH=/usr/share/webapps/adminer \
     ADMINER_PLUGINS_PATH=/usr/share/webapps/adminer/plugins \
@@ -59,4 +60,4 @@ COPY docker-entrypoint.sh /usr/local/bin/
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
-CMD ["php","-S","0.0.0.0:80","-t","/usr/share/webapps/adminer"]
+CMD ["sh","-c","php -S 0.0.0.0:${ADMINER_PORT} -t /usr/share/webapps/adminer"]

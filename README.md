@@ -16,6 +16,7 @@ To help you get started creating a container from this image you can either use 
 docker run -d \
   --name=adminer \
   -e TZ=Asia/Shanghai \
+  -p 8080:8080 \
   --restart unless-stopped \
   snowdreamtech/adminer:latest
 ```
@@ -26,7 +27,8 @@ docker run -d \
 docker run -d \
   --name=adminer \
   -e TZ=Asia/Shanghai \
-  -v /path/to/data:/path/to/data \
+  -e ADMINER_PORT=8080 \ 
+  -p 8080:8080 \
   --restart unless-stopped \
   snowdreamtech/adminer:latest
 ```
@@ -44,6 +46,8 @@ services:
     container_name: adminer
     environment:
       - TZ=Asia/Shanghai
+    ports:
+      - 8080:8080   
     restart: unless-stopped
 ```
 
@@ -58,8 +62,9 @@ services:
     container_name: adminer
     environment:
       - TZ=Asia/Shanghai
-    volumes:
-      - /path/to/data:/path/to/data
+      - ADMINER_PORT=8080
+    ports:
+      - 8080:8080   
     restart: unless-stopped
 ```
 
