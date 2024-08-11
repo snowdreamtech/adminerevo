@@ -54,6 +54,7 @@ function adminer_object() {
         new AdminerFileUpload("data/"),//https://raw.githubusercontent.com/adminerevo/adminerevo/master/plugins/file-upload.php
         new AdminerForeignSystem(),   // https://raw.githubusercontent.com/adminerevo/adminerevo/master/plugins/foreign-system.php     
         //new AdminerFrames(),        // https://raw.githubusercontent.com/adminerevo/adminerevo/master/plugins/frames.php    
+        new AdminerImportFromDir(),        // https://raw.githubusercontent.com/adminerevo/adminerevo/master/plugins/import-from-dir.php    
         new AdminerJsonColumn(),      // https://raw.githubusercontent.com/adminerevo/adminerevo/master/plugins/json-column.php  
         // new AdminerLoginOtp(),        // https://raw.githubusercontent.com/adminerevo/adminerevo/master/plugins/login-otp.php
         // new AdminerLoginServers(),    // https://raw.githubusercontent.com/adminerevo/adminerevo/master/plugins/login-servers.php     

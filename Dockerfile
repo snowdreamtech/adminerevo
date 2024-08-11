@@ -2,7 +2,7 @@ FROM snowdreamtech/php:8.1.29
 
 LABEL maintainer="snowdream <sn0wdr1am@qq.com>"
 
-ENV ADMINEREVO_VERSION=4.8.2 \
+ENV ADMINEREVO_VERSION=4.8.3 \
     ADMINEREVO_PORT=8080 \
     ADMINEREVO_SQLITE_PASSWORD='' \
     ADMINEREVO_PATH=/usr/share/webapps/adminerevo \
@@ -14,6 +14,7 @@ RUN mkdir -p ${ADMINEREVO_PATH} \
     && mkdir -p ${ADMINEREVO_DRIVERS_PATH} \
     && wget https://github.com/adminerevo/adminerevo/releases/download/v${ADMINEREVO_VERSION}/adminer-${ADMINEREVO_VERSION}.php -O ${ADMINEREVO_PATH}/adminer.php \
     && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/adminerevo/adminerevo/v${ADMINEREVO_VERSION}/plugins/plugin.php -O ${ADMINEREVO_PLUGINS_PATH}/plugin.php \
+    && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/adminerevo/adminerevo/v${ADMINEREVO_VERSION}/plugins/adminer.js.php -O ${ADMINEREVO_PLUGINS_PATH}/adminer.js.php \
     && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/adminerevo/adminerevo/v${ADMINEREVO_VERSION}/plugins/database-hide.php -O ${ADMINEREVO_PLUGINS_PATH}/database-hide.php \
     && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/adminerevo/adminerevo/v${ADMINEREVO_VERSION}/plugins/designs.php -O ${ADMINEREVO_PLUGINS_PATH}/designs.php \
     && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/adminerevo/adminerevo/v${ADMINEREVO_VERSION}/plugins/dump-alter.php -O ${ADMINEREVO_PLUGINS_PATH}/dump-alter.php \
@@ -30,7 +31,10 @@ RUN mkdir -p ${ADMINEREVO_PATH} \
     && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/adminerevo/adminerevo/v${ADMINEREVO_VERSION}/plugins/file-upload.php -O ${ADMINEREVO_PLUGINS_PATH}/file-upload.php \
     && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/adminerevo/adminerevo/v${ADMINEREVO_VERSION}/plugins/foreign-system.php -O ${ADMINEREVO_PLUGINS_PATH}/foreign-system.php \
     && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/adminerevo/adminerevo/v${ADMINEREVO_VERSION}/plugins/frames.php -O ${ADMINEREVO_PLUGINS_PATH}/frames.php \
+    && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/adminerevo/adminerevo/v${ADMINEREVO_VERSION}/plugins/import-from-dir.php -O ${ADMINEREVO_PLUGINS_PATH}/import-from-dir.php \
     && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/adminerevo/adminerevo/v${ADMINEREVO_VERSION}/plugins/json-column.php -O ${ADMINEREVO_PLUGINS_PATH}/json-column.php \
+    && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/adminerevo/adminerevo/v${ADMINEREVO_VERSION}/plugins/login-external.php -O ${ADMINEREVO_PLUGINS_PATH}/login-external.php \
+    && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/adminerevo/adminerevo/v${ADMINEREVO_VERSION}/plugins/login-ip.php -O ${ADMINEREVO_PLUGINS_PATH}/login-ip.php \
     && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/adminerevo/adminerevo/v${ADMINEREVO_VERSION}/plugins/login-otp.php -O ${ADMINEREVO_PLUGINS_PATH}/login-otp.php \
     && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/adminerevo/adminerevo/v${ADMINEREVO_VERSION}/plugins/login-servers.php -O ${ADMINEREVO_PLUGINS_PATH}/login-servers.php \
     && wget https://gh-proxy.sn0wdr1am.com/https://raw.githubusercontent.com/adminerevo/adminerevo/v${ADMINEREVO_VERSION}/plugins/login-password-less.php -O ${ADMINEREVO_PLUGINS_PATH}/login-password-less.php \
