@@ -18,7 +18,6 @@ function adminer_object() {
     // required to run any plugin
     include_once "./plugins/plugin.php";
 
-
     // plugins autoloader
     foreach (glob("plugins/*.php") as \$filename) {
         include_once "./\$filename";
@@ -35,6 +34,8 @@ function adminer_object() {
     include "./plugins/drivers/firebird.php";
     include "./plugins/drivers/clickhouse.php";
     
+    \$adminer = new AdminerPlugin([]);
+
     \$plugins = array(
         // specify enabled plugins here
         // new AdminerDatabaseHide(array('information_schema' , 'mysql' , 'performance_schema' , 'sys')),    // https://raw.githubusercontent.com/vrana/adminer/master/plugins/database-hide.php
@@ -61,11 +62,11 @@ function adminer_object() {
         // new AdminerLoginSsl(),        // https://raw.githubusercontent.com/vrana/adminer/master/plugins/login-ssl.php
         // new AdminerLoginTable(),      // https://raw.githubusercontent.com/vrana/adminer/master/plugins/login-table.php
         // new AdminerMasterSlave(),     // https://raw.githubusercontent.com/vrana/adminer/master/plugins/master-slave.php
-        // new AdminerPrettyJsonColumn(),// https://raw.githubusercontent.com/vrana/adminer/master/plugins/pretty-json-column.php
-        // new AdminerSlugify(),         // https://raw.githubusercontent.com/vrana/adminer/master/plugins/slugify.php
-        // new AdminerSqlLog(),          // https://raw.githubusercontent.com/vrana/adminer/master/plugins/sql-log.php
-        // new AdminerStructComments(),  // https://raw.githubusercontent.com/vrana/adminer/master/plugins/struct-comments.php
-        // new AdminerTablesFilter(),    // https://raw.githubusercontent.com/vrana/adminer/master/plugins/tables-filter.php
+        new AdminerPrettyJsonColumn(\$adminer),// https://raw.githubusercontent.com/vrana/adminer/master/plugins/pretty-json-column.php
+        new AdminerSlugify(),         // https://raw.githubusercontent.com/vrana/adminer/master/plugins/slugify.php
+        new AdminerSqlLog(),          // https://raw.githubusercontent.com/vrana/adminer/master/plugins/sql-log.php
+        new AdminerStructComments(),  // https://raw.githubusercontent.com/vrana/adminer/master/plugins/struct-comments.php
+        new AdminerTablesFilter(),    // https://raw.githubusercontent.com/vrana/adminer/master/plugins/tables-filter.php
         // new AdminerTinymce(),         // https://raw.githubusercontent.com/vrana/adminer/master/plugins/tinymce.php
         new AdminerTranslation(),     // https://raw.githubusercontent.com/vrana/adminer/master/plugins/translation.php
         new AdminerVersionNoverify(), // https://raw.githubusercontent.com/vrana/adminer/master/plugins/version-noverify.php
@@ -78,7 +79,9 @@ function adminer_object() {
     return new AdminerCustomization(\$plugins);
     */
     
-    return new AdminerPlugin(\$plugins);
+    \$adminer->plugins = \$plugins;
+
+    return \$adminer;
 }
 
 // include original Adminer or Adminer Editor
