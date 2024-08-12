@@ -2,7 +2,7 @@ FROM snowdreamtech/php:8.1.29
 
 LABEL maintainer="snowdream <sn0wdr1am@qq.com>"
 
-ENV ADMINEREVO_VERSION=4.8.3 \
+ENV ADMINEREVO_VERSION=4.8.4 \
     ADMINEREVO_PORT=8080 \
     ADMINEREVO_SQLITE_PASSWORD='' \
     ADMINEREVO_PATH=/usr/share/webapps/adminerevo \

@@ -66,11 +66,11 @@ jobs:
             push: true
             tags: |
               snowdreamtech/adminerevo:latest
-              snowdreamtech/adminerevo:4.8.3
+              snowdreamtech/adminerevo:4.8.4
               snowdreamtech/adminerevo:4.8
               snowdreamtech/adminerevo:4
               ghcr.io/snowdreamtech/adminerevo:latest
-              ghcr.io/snowdreamtech/adminerevo:4.8.3
+              ghcr.io/snowdreamtech/adminerevo:4.8.4
               ghcr.io/snowdreamtech/adminerevo:4.8
               ghcr.io/snowdreamtech/adminerevo:4
              
