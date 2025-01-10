@@ -2,15 +2,15 @@ FROM snowdreamtech/debian:12.8.0
 
 # OCI annotations to image
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
-    org.opencontainers.image.title="Base Image Based On Debian" \
-    org.opencontainers.image.description="Docker Images for Base on Debian. (i386,amd64,arm32v5,arm32v7,arm64,mips64le,ppc64le,s390x)" \
-    org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/base" \
-    org.opencontainers.image.base.name="snowdreamtech/base:debian" \
+    org.opencontainers.image.title="Adminerevo Image Based On Debian" \
+    org.opencontainers.image.description="Docker Images for Adminerevo on Debian. (i386,amd64,arm32v5,arm32v7,arm64,mips64le,ppc64le,s390x)" \
+    org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/adminerevo" \
+    org.opencontainers.image.base.name="snowdreamtech/adminerevo:debian" \
     org.opencontainers.image.licenses="MIT" \
-    org.opencontainers.image.source="https://github.com/snowdreamtech/base" \
+    org.opencontainers.image.source="https://github.com/snowdreamtech/adminerevo" \
     org.opencontainers.image.vendor="Snowdream Tech" \
     org.opencontainers.image.version="12.8" \
-    org.opencontainers.image.url="https://github.com/snowdreamtech/base"
+    org.opencontainers.image.url="https://github.com/snowdreamtech/adminerevo"
     
 # Switch to the user
 USER root
@@ -24,10 +24,10 @@ ENV KEEPALIVE=1 \
     # which are port numbers less than 1024. 
     CAP_NET_BIND_SERVICE=0
 
-ARG GID=1000 \
+ ARG GID=1000 \
     UID=1000  \
-    USER=base \
-    WORKDIR=/home/base
+    USER=root \
+    WORKDIR=/root
 
 # Create a user with UID and GID
 RUN set -eux \
